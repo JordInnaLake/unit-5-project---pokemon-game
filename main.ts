@@ -2,7 +2,9 @@ namespace SpriteKind {
     export const plate = SpriteKind.create()
 }
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-	
+    while (false) {
+    	
+    }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.plate, function (sprite, otherSprite) {
     animation.runImageAnimation(
