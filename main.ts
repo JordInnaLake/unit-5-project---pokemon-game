@@ -48,8 +48,19 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.plate, function (sprite, otherSp
     false
     )
 })
+info.player1.onLifeZero(function () {
+    player1.destroy(effects.disintegrate, 500)
+})
+info.player2.onLifeZero(function () {
+    player2.destroy(effects.disintegrate, 500)
+})
+let player2: Sprite = null
+let player1: Sprite = null
 let plate1: Sprite = null
+effects.blizzard.startScreenEffect(2000)
 tiles.setTilemap(tilemap`level1`)
+info.player1.setLife(5)
+info.player2.setLife(5)
 plate1 = sprites.create(img`
     b b b b b b b b b b b b b b b b 
     b c b e 4 4 4 4 4 4 4 4 e b c b 
@@ -68,7 +79,7 @@ plate1 = sprites.create(img`
     b c b b b b b b b b b b b b c b 
     b b b b b b b b b b b b b b b b 
     `, SpriteKind.plate)
-let player1 = sprites.create(img`
+player1 = sprites.create(img`
     . . . . . . f f f f . . . . . . 
     . . . . f f f 2 2 f f f . . . . 
     . . . f f f 2 2 2 2 f f f . . . 
@@ -89,7 +100,7 @@ let player1 = sprites.create(img`
 plate1.setPosition(20, 21)
 player1.setPosition(119, 53)
 controller.player1.moveSprite(player1, 100, 100)
-let player2 = sprites.create(img`
+player2 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . b 5 b . . . 
     . . . . . . . . . b 5 b . . . . 
